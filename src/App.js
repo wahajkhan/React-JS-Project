@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as React from 'react';
+import {
+  Button,
+  Container,
+  Row,
+  Col,
+  Form,
+  Dropdown ,
+  DropdownButton,
+  ListGroup,
+  Item } from 'react-bootstrap';
+  import NavBar from './component/NavBar' 
+  import Search from './component/Search'
+  import AppointmentList from './component/AppointmentList'
+   import AppointmentData_Json from './appointmentData.json'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="App">
+       <NavBar/>~
+       <Search/>
+       <AppointmentList appointmentdata={AppointmentData_Json}/>
+
+       {/* <Button variant="primary">Home</Button> */}
+    </Container>
   );
 }
 
