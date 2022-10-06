@@ -8,27 +8,47 @@ import {
   Form,
   Dropdown ,
   DropdownButton  } from 'react-bootstrap';
+  import { BsCheck2 } from "react-icons/bs";
 
+ export default  function Search({query,onQueryChange,sortBy,onSortByChange,orderBy,onOrderByChange}) {
 
- export default  function Search() {
-
+  console.log(orderBy);
     return(
 <Row className='mt-3'>
 <Col>
 <Form.Control
     type="text"
     placeholder="Search"
-    id="inputtext"
     aria-describedby="passwordHelpBlock"
+    name="query"
+    id="query"
+    value={query}
+    onChange={(event)=>{onQueryChange(event.target.value)}}
 />
 </Col>
 <Col xs={2}>
- <DropdownButton id="dropdown-basic-button" title="Filter">
-  <Dropdown.Item href="#/action-1">Pet name</Dropdown.Item>
-  <Dropdown.Item href="#/action-2">Owner name</Dropdown.Item>
-  <Dropdown.Item href="#/action-3">Date</Dropdown.Item>
-  {/* <Dropdown.Item href="#/action-3">Sort by Asc</Dropdown.Item>
-  <Dropdown.Item href="#/action-3">Sort by Desc</Dropdown.Item> */}
+ <DropdownButton id="dropdown-basic-button" title="Sort By">
+  <Dropdown.Item onClick={(mySort)=>onSortByChange('petName')}>
+    <span className="">Pet name</span>
+    {(sortBy=='petName')&&<BsCheck2 className="text-success"/>}
+  </Dropdown.Item>
+  <Dropdown.Item onClick={(mySort)=>onSortByChange('ownerName')}>
+    <span className="">Owner name</span>
+    {(sortBy=='ownerName')&&<BsCheck2 className="text-success"/>}
+    </Dropdown.Item>
+  <Dropdown.Item onClick={(mySort)=>onSortByChange('aptDate')}>
+  <span className="">Date</span>
+    {(sortBy=='aptDate')&&<BsCheck2 className="text-success"/>}
+  </Dropdown.Item>
+  <Dropdown.Divider />
+  <Dropdown.Item onClick={(myOrder)=>onOrderByChange('asc')}>
+    <span>Order by Asc</span>
+    {(orderBy=='asc')&&<BsCheck2 className="text-success"/>}
+    </Dropdown.Item>
+  <Dropdown.Item onClick={(myOrder)=>onOrderByChange('desc')}>
+    <span>Order by Desc</span>
+    {(orderBy=='desc')&&<BsCheck2 className="text-success"/>}
+  </Dropdown.Item>
 </DropdownButton>
 </Col>
 </Row>
